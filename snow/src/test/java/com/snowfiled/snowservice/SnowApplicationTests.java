@@ -1,4 +1,4 @@
-package com.example.snow;
+package com.snowfiled.snowservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
