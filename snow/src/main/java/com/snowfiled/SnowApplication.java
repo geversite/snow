@@ -1,4 +1,4 @@
-package com.snowfiled.snowservice;
+package com.snowfiled;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
