@@ -1,12 +1,15 @@
 # snow
 # 评论加图限制4张
 # 数据库设计
+# 数据库地址：43.143.241.133/snowSchema  
+# 用户：bikini   密码：bikini
 
 ## 数据表
 
 列名使用小驼峰命名法
 
 所有id和status都是int，其他都是varchar，time是Data，value是float
+
 
 #### user
 
