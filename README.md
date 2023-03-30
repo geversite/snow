@@ -1,7 +1,7 @@
 # snow
 # 评论加图限制4张
 # 数据库设计
-# 数据库地址：43.143.241.133/snowSchema  
+# 数据库地址：43.143.241.133/snowschema  
 # 用户：bikini   密码：bikini
 
 ## 数据表
@@ -57,6 +57,13 @@ ResponseData={
     message,//消息，比如请求成功，请求失败，参数非法，密码错误等提示信息
 }
 ```
+
+Mapper方法命名规范：（行为）（目标(s)）By（特征）（And特征）*
+如： getCommentsByOrderAndPage
+
+service方法命名规范：url小驼峰
+
+
 
 ## 二、API列表
 

@@ -1,15 +1,16 @@
 package com.snowfiled.mapper;
 
-import com.snowfiled.bean.Window;
+import com.snowfiled.bean.Canteen;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 @Mapper
-public interface windowMapper {
+public interface CanteenMapper {
 
-    @Select("select * from window")
-    List<Window> getWindows();
+    @Select("select * from canteen")
+    List<Canteen> getCanteens();
 
 }
+

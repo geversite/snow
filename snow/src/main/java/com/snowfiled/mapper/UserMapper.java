@@ -1,6 +1,7 @@
 package com.snowfiled.mapper;
 
 import com.snowfiled.bean.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -8,7 +9,10 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper {
 
     @Select("Select * from user where userID = #{userID}")
-    User getUserByUserID(String userID);
+    User getUserByUserID(int userID);
+
+    @Insert("insert into user (userID,userName,userStatus,password,userImg,userMassage) values (#{userID},#{userName},#{userStatus},#{password},#{userImg},#{useMessage})")
+    int addUser(User user);
 
 
 
