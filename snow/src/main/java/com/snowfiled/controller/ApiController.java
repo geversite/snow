@@ -1,6 +1,7 @@
 package com.snowfiled.controller;
 
 import com.snowfiled.bean.*;
+import com.snowfiled.responsedata.CommentDetail;
 import com.snowfiled.responsedata.ResponseData;
 import com.snowfiled.responsedata.WindowDetail;
 import com.snowfiled.service.CommentService;
@@ -56,7 +57,6 @@ public class ApiController {
         ResponseData.Builder<List<Window>> builder = ResponseData.<List<Window>>builder();
         return builder.data(windowService.windowList()).successs().message("获取成功").build();
 
-
     }
 
     @RequestMapping("/objects_list")
@@ -84,9 +84,9 @@ public class ApiController {
 
     @RequestMapping("/comments")
     @ResponseBody
-    public ResponseData<List<Comment>> comments(String order, boolean desc,int page){
-        ResponseData.Builder<List<Comment>> builder = ResponseData.<List<Comment>>builder();
-        return builder.data(commentService.comments(order,desc,page)).successs().message("获取成功").build();
+    public ResponseData<List<CommentDetail>> comments(String order, boolean desc, int page){
+        ResponseData.Builder<List<CommentDetail>> builder = ResponseData.<List<CommentDetail>>builder();
+        return builder.data(commentService.commentsDetail(order,desc,page)).successs().message("获取成功").build();
     }
 
     @RequestMapping("/window_comments")
