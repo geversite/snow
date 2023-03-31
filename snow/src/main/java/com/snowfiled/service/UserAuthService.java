@@ -11,6 +11,8 @@ public class UserAuthService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+
+
         // TODO: 2023/3/29 security service
         return User
                 .withUsername(s)

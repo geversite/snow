@@ -2,6 +2,7 @@ package com.snowfiled.service;
 
 import com.snowfiled.bean.Canteen;
 import com.snowfiled.bean.Floor;
+import com.snowfiled.bean.PeopleTimeData;
 import com.snowfiled.bean.Window;
 import com.snowfiled.mapper.CanteenMapper;
 import com.snowfiled.mapper.WindowMapper;
@@ -39,4 +40,8 @@ public class WindowService {
         return windowMapper.getWindowByWindowID(windowID);
     }
 
+    // TODO: 2023/3/31 实现方法 
+    public List<PeopleTimeData> peopleTimeData(int windowID) {
+            return null;
+    }
 }

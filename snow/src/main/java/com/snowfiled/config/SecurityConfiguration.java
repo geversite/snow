@@ -25,14 +25,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // TODO: 2023/3/29 this should be modified
         http
                 .authorizeRequests()
-                .antMatchers("/static/**","/","/").permitAll() //here add the api needn't login can be access.
+                .antMatchers("/static/**","/aip").permitAll() //here add the api needn't login can be access.
                 .anyRequest().hasAnyRole("user","admin")
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/doLogin")
                 .permitAll()
-                .defaultSuccessUrl("/index",true)
                 .permitAll()
                 .and()
                 .rememberMe()
