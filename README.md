@@ -1,30 +1,35 @@
 # snow
 # 评论加图限制4张
 # 数据库设计
+# 数据库地址：43.143.241.133/snowschema  
+# 用户：bikini   密码：bikini
 
 ## 数据表
 
 列名使用小驼峰命名法
 
+所有id和status都是int，其他都是varchar，time是Data，value是float
+
+
 #### user
 
-userID, userName,  user Status, password（密文）,  userImg\*, userMessage
+userID (nn), userName, (nn) user Status (nn), password（密文）(nn),  userImg\*, userMessage
 
 #### canteen
 
-canteenID, canteenName, canteenStatus, canteenMessage\*, canteenImg\*
+canteenID(nn), canteenName(nn), canteenStatus(nn), canteenMessage\*, canteenImg\*
 
 #### window
 
-windowID, windowName, windowStatus, windowMessage\*, windowFloor, canteenID,
+windowID(nn), windowName(nn), windowStatus(nn), windowMessage\*, windowFloor(nn), canteenID(nn),/*加个windowImg*/
 
 #### comment
 
-commentID, commentName, commentStatus,  commentTime, commentText, commentRate, userID, /*增加windowID*/
+commentID(nn), commentName, commentStatus(nn),  commentTime(nn), commentText(nn), commentRate, userID, /*增加windowID*/
 
 #### dish
 
-dishID, dishName, dishStatus, windowID, dishValue
+dishID(nn), dishName(nn), dishStatus(nn), windowID(nn), dishValue(nn)
 
 #### 推荐窗口信息
 
@@ -52,6 +57,13 @@ ResponseData={
     message,//消息，比如请求成功，请求失败，参数非法，密码错误等提示信息
 }
 ```
+
+Mapper方法命名规范：（行为）（目标(s)）By（特征）（And特征）*
+如： getCommentsByOrderAndPage
+
+service方法命名规范：url小驼峰
+
+
 
 ## 二、API列表
 
