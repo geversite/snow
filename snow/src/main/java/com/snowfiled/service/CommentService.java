@@ -3,10 +3,12 @@ package com.snowfiled.service;
 import com.snowfiled.bean.Comment;
 import com.snowfiled.mapper.CommentMapper;
 import com.snowfiled.responsedata.CommentDetail;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class CommentService {
 
     @Resource

@@ -34,24 +34,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Component
-    @Slf4j
+
     public class CustomizeAuthenticationSuccessHandler implements org.springframework.security.web.authentication.AuthenticationSuccessHandler {
         @Override
         public void onAuthenticationSuccess(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response, org.springframework.security.core.Authentication authentication) throws java.io.IOException, javax.servlet.ServletException {
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().write(new com.snowfiled.responsedata.ResponseData.Builder<String>().status(200).message("登录成功").build().toString());
-            log.info(authentication.getName()+"登录成功");
+
         }
     }
 
     @Component
-    @Slf4j
+
     public class CustomizeAuthenticationFailureHandler implements org.springframework.security.web.authentication.AuthenticationFailureHandler {
         @Override
         public void onAuthenticationFailure(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response, org.springframework.security.core.AuthenticationException exception) throws java.io.IOException, javax.servlet.ServletException {
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().write(new com.snowfiled.responsedata.ResponseData.Builder<String>().status(401).message(exception.getMessage()).build().toString());
-            log.info(exception.getMessage());
+
         }
     }
 
@@ -73,7 +73,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // TODO: 2023/4/1 这里要不要对security 框架进行进一步完善
         http
                 .authorizeRequests()
-                .antMatchers("/static/**","/aip").permitAll() //here add the api needn't login can be access.
+                .antMatchers("/static/**","/api/**").permitAll() //here add the api needn't login can be access.
                 .anyRequest().hasAnyRole("user","admin")
                 .and()
                 .formLogin()

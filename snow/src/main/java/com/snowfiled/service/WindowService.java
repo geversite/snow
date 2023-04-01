@@ -6,11 +6,13 @@ import com.snowfiled.bean.PeopleTimeData;
 import com.snowfiled.bean.Window;
 import com.snowfiled.mapper.CanteenMapper;
 import com.snowfiled.mapper.WindowMapper;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class WindowService {
 
     @Resource
