@@ -8,6 +8,8 @@ import com.snowfiled.service.CommentService;
 import com.snowfiled.service.UserService;
 import com.snowfiled.service.WindowService;
 import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +19,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/aip")
-@Log4j
+@Slf4j
 public class ApiController {
 
     @Resource
@@ -33,13 +35,18 @@ public class ApiController {
     @ResponseBody
     public ResponseData<User> register(User user) {
         try {
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            user.setPassword(encoder.encode(user.getPassword()));
+            //这里对密码进行了hash加密处理
             userService.register(user);
             ResponseData.Builder<User> builder = ResponseData.<User>builder();
             builder.data(user).status(200).message("注册成功");
+            log.info(user.getUserID()+user.getUserName() + "注册成功");
             return builder.build();
         } catch (Exception e) {
             ResponseData.Builder<User> builder = ResponseData.<User>builder();
             builder.data(user).status(500).message(e.getMessage());
+            log.info(user.getUserID()+user.getUserName() + "注册失败");
             return builder.build();
         }
     }
@@ -81,6 +88,8 @@ public class ApiController {
         ResponseData.Builder<List<Window>> builder = ResponseData.<List<Window>>builder();
         return builder.data(windowService.windowList()).successs().message("获取成功").build();
     }
+
+
 
     @RequestMapping("/comments")
     @ResponseBody

@@ -16,7 +16,7 @@ public class WindowDetail {
     String windowName;
     int windowStatus;
     int windowFloor;
-    int canteenName;
+    String canteenName;
     // TODO: 2023/3/31 要不要改成canteenName
     List<PeopleTimeData> peopleTimeData;
 
@@ -27,7 +27,7 @@ public class WindowDetail {
         this.windowName = window.getWindowName();
         this.windowStatus = window.getWindowStatus();
         this.windowFloor = window.getWindowFloor();
-        this.canteenName = window.getCanteenID();
+        this.canteenName = getCanteenName(window.getCanteenID());
     }
 
     private String getCanteenName(int canteenID){
