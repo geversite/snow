@@ -1,13 +1,11 @@
 package com.snowfiled.controller;
 
 import com.snowfiled.bean.*;
-import com.snowfiled.responsedata.CommentDetail;
 import com.snowfiled.responsedata.ResponseData;
 import com.snowfiled.responsedata.WindowDetail;
 import com.snowfiled.service.CommentService;
 import com.snowfiled.service.UserService;
 import com.snowfiled.service.WindowService;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -93,9 +91,9 @@ public class ApiController {
 
     @RequestMapping("/comments")
     @ResponseBody
-    public ResponseData<List<CommentDetail>> comments(String order, boolean desc, int page){
-        ResponseData.Builder<List<CommentDetail>> builder = ResponseData.<List<CommentDetail>>builder();
-        return builder.data(commentService.commentsDetail(order,desc,page)).successs().message("获取成功").build();
+    public ResponseData<List<Comment>> comments(String order, boolean desc, int page){
+        ResponseData.Builder<List<Comment>> builder = ResponseData.<List<Comment>>builder();
+        return builder.data(commentService.comments(order,desc,page)).successs().message("获取成功").build();
     }
 
     @RequestMapping("/window_comments")

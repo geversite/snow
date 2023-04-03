@@ -1,6 +1,7 @@
 package com.snowfiled.mapper;
 
 import com.snowfiled.bean.Comment;
+import com.snowfiled.bean.PeopleTimeData;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -17,5 +18,6 @@ public interface CommentMapper {
 
     @Select("select * from comment where windowID = #{windowID} order by #{order} #{desc} limit #{st},20")
     List<Comment> getCommentsByWindowIDAndOrderAndPage(int windowID,String order,String desc,int st);
+
 
 }

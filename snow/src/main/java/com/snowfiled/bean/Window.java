@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @ToString
 @Data
@@ -14,6 +16,8 @@ public class Window {
     String windowMessage;
     int windowFloor;
     int canteenID;
+    String canteenName;//附加属性
     String windowImg;
+    List<PeopleTimeData> peopleTimeData;//附加属性
 
 }

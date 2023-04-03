@@ -19,7 +19,9 @@ public class Comment {
     int commentRate;
     int userID;
     int windowID;
-    String windowName;
+    String userName;//附加属性
+    String userImg;//附加属性
+    String windowName;//附加属性
     // TODO: 2023/3/31 service添加这个内容
     // TODO: 2023/3/31 这里需要提醒一下陈帆，加入windowsID在前端的展示里 
 }

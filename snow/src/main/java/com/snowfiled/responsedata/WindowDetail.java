@@ -32,6 +32,7 @@ public class WindowDetail {
 
     private String getCanteenName(int canteenID){
         // TODO: 2023/3/31  这里要怎么实现呢，写一个service类吗
+
         CanteenMapper canteenMapper = null;
         return canteenMapper.getCanteenNameByCanteenID(canteenID);
     }

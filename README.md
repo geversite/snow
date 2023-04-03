@@ -13,6 +13,9 @@
 所有id和status都是int，其他都是varchar，time是Data，value是float
 
 
+#### pay
+
+dishID , userID,payID（PK） payTime
 #### user
 
 userID (nn), userName, (nn) user Status (nn), password（密文）(nn),  userImg\*, userMessage
