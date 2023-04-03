@@ -20,6 +20,7 @@ import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
+@Slf4j
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Resource
     UserAuthService service;
@@ -30,17 +31,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().write(new com.snowfiled.responsedata.ResponseData.Builder<String>().status(401).message("未登录").build().toString());
+            log.info("未登录的访问");
         }
     }
 
     @Component
-
     public class CustomizeAuthenticationSuccessHandler implements org.springframework.security.web.authentication.AuthenticationSuccessHandler {
         @Override
         public void onAuthenticationSuccess(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response, org.springframework.security.core.Authentication authentication) throws java.io.IOException, javax.servlet.ServletException {
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().write(new com.snowfiled.responsedata.ResponseData.Builder<String>().status(200).message("登录成功").build().toString());
-
+            log.info(authentication.getName()+"登录成功");
         }
     }
 
@@ -51,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         public void onAuthenticationFailure(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response, org.springframework.security.core.AuthenticationException exception) throws java.io.IOException, javax.servlet.ServletException {
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().write(new com.snowfiled.responsedata.ResponseData.Builder<String>().status(401).message(exception.getMessage()).build().toString());
-
+            log.info("登录失败");
         }
     }
 
@@ -61,6 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         public void onLogoutSuccess(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response, org.springframework.security.core.Authentication authentication) throws java.io.IOException, javax.servlet.ServletException {
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().write(new com.snowfiled.responsedata.ResponseData.Builder<String>().status(200).message("登出成功").build().toString());
+            log.info(authentication.getName()+"登出成功");
         }
     }
 
