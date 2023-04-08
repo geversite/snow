@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     UserAuthService service;
 
     @Component
-    public class CustomizeAuthenticationEntryPoint implements org.springframework.security.web.AuthenticationEntryPoint {
+    public static class CustomizeAuthenticationEntryPoint implements org.springframework.security.web.AuthenticationEntryPoint {
         @Override
         public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
             response.setContentType("application/json;charset=utf-8");
@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Component
-    public class CustomizeAuthenticationSuccessHandler implements org.springframework.security.web.authentication.AuthenticationSuccessHandler {
+    public static class CustomizeAuthenticationSuccessHandler implements org.springframework.security.web.authentication.AuthenticationSuccessHandler {
         @Override
         public void onAuthenticationSuccess(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response, org.springframework.security.core.Authentication authentication) throws java.io.IOException, javax.servlet.ServletException {
             response.setContentType("application/json;charset=utf-8");

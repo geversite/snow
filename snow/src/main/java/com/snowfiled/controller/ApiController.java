@@ -2,7 +2,6 @@ package com.snowfiled.controller;
 
 import com.snowfiled.bean.*;
 import com.snowfiled.responsedata.ResponseData;
-import com.snowfiled.responsedata.WindowDetail;
 import com.snowfiled.service.CommentService;
 import com.snowfiled.service.UserService;
 import com.snowfiled.service.WindowService;
@@ -73,10 +72,9 @@ public class ApiController {
 
     @RequestMapping("/window_detail")
     @ResponseBody
-    public ResponseData<WindowDetail> window_detail(int windowID) {
-        ResponseData.Builder<WindowDetail> builder = ResponseData.<WindowDetail>builder();
-        WindowDetail windowDetail = new WindowDetail(windowService.windowDetail(windowID), windowService.peopleTimeData(windowID));
-        return builder.data(windowDetail).successs().message("获取成功").build();
+    public ResponseData<Window> window_detail(int windowID) {
+        ResponseData.Builder<Window> builder = ResponseData.<Window>builder();
+        return builder.data(windowService.windowDetail(windowID)).successs().message("获取成功").build();
     }
 
     @RequestMapping("/windows")

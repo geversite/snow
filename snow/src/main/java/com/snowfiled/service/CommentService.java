@@ -27,7 +27,6 @@ public class CommentService {
 
     public List<Comment> windowComments(int windowID,String order,boolean desc,int page){
         return proc(commentMapper.getCommentsByWindowIDAndOrderAndPage(windowID,order,desc?"desc":"asc",(page-1)*20));
-        // TODO: 2023/3/31 这里也要把comment转换成commentDetail
     }
 
     protected List<Comment> proc(List<Comment> list){
