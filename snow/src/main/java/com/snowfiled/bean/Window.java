@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -19,5 +20,10 @@ public class Window {
     String canteenName;//附加属性
     String windowImg;
     List<PeopleTimeData> peopleTimeData;//附加属性
+
+    public Window(){
+        super();
+        peopleTimeData = new ArrayList<>();
+    }
 
 }
