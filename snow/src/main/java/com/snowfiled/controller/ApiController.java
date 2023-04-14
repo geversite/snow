@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/api")
@@ -52,7 +53,10 @@ public class ApiController {
     @ResponseBody
     public ResponseData<User> get_login_info(int UserID) {
         ResponseData.Builder<User> builder = ResponseData.<User>builder();
-        return builder.data(userService.getLoginInfo(UserID)).successs().message("获取成功").build();
+        User user = userService.getLoginInfo(UserID);
+        if (user==null)
+            return builder.data(user).status(2).message("用户不存在").build();
+        return builder.data(user).successs().message("获取成功").build();
     }
 
     @RequestMapping("/windows_list")
@@ -89,14 +93,26 @@ public class ApiController {
 
     @RequestMapping("/comments")
     @ResponseBody
-    public ResponseData<List<Comment>> comments(String order, boolean desc, int page){
+    public ResponseData<List<Comment>> comments(String order, Boolean desc, Integer page){
+        if (Objects.equals(order, ""))
+            order="comment_time";
+        if (desc==null)
+            desc=true;
+        if (page==null)
+            page=1;
         ResponseData.Builder<List<Comment>> builder = ResponseData.<List<Comment>>builder();
         return builder.data(commentService.comments(order,desc,page)).successs().message("获取成功").build();
     }
 
     @RequestMapping("/window_comments")
     @ResponseBody
-    public ResponseData<List<Comment>> window_comments(int windowID,String order, boolean desc,int page){
+    public ResponseData<List<Comment>> window_comments(int windowID, String order, Boolean desc,Integer page){
+        if (Objects.equals(order, ""))
+            order="comment_time";
+        if (desc==null)
+            desc=true;
+        if (page==null)
+            page=1;
         ResponseData.Builder<List<Comment>> builder = ResponseData.<List<Comment>>builder();
         return builder.data(commentService.windowComments(windowID,order,desc,page)).successs().message("获取成功").build();
     }
